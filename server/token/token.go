@@ -15,7 +15,6 @@ type Token struct {
 
 var ErrMissingHeader = errors.New("The length of the `Authorization` header is zero.")
 
-
 // * 下发token
 func Sign(ctx *gin.Context, key, secret string) (tokenString string, err error) {
 
@@ -29,9 +28,9 @@ func Sign(ctx *gin.Context, key, secret string) (tokenString string, err error) 
 		// * 用户申请token携带的key
 		"key": key,
 		// * 生效时间
-		"nbf":      time.Now().Unix(),
+		"nbf": time.Now().Unix(),
 		// * 签发时间
-		"iat":      time.Now().Unix(),
+		"iat": time.Now().Unix(),
 		// * 过期时间
 		//"exp":      time.Now().Add(time.Hour * 2).Unix(),
 	})
@@ -40,7 +39,6 @@ func Sign(ctx *gin.Context, key, secret string) (tokenString string, err error) 
 
 	return
 }
-
 
 func ParseRequest(c *gin.Context) error {
 	header := c.Request.Header.Get("Authorization")
@@ -54,10 +52,9 @@ func ParseRequest(c *gin.Context) error {
 
 	var t string
 	// * Parse the header to get the token part.
-	fmt.Sscanf(header, "Bearer %s", &t)
+	_, _ = fmt.Sscanf(header, "Bearer %s", &t)
 	return Parse(t, secret)
 }
-
 
 // * 解析token
 func Parse(token, secret string) error {

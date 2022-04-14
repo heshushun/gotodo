@@ -5,16 +5,15 @@ import (
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 
-	_ "mini_todo/docs"
-	"mini_todo/handler"
-	"mini_todo/middleware"
 	"net/http"
+	_ "todos/docs"
+	"todos/handler"
+	"todos/middleware"
 )
 
 func Load(g *gin.Engine) *gin.Engine {
 
-	// * 全局middlewares
-
+	// * 全局 middleware
 	g.Use(gin.Recovery())
 	g.Use(middleware.NoCache)
 	g.Use(middleware.Options)
@@ -44,7 +43,6 @@ func Load(g *gin.Engine) *gin.Engine {
 
 	// * api server 健康状况
 	svcd := g.Group("/sd")
-
 	{
 		svcd.GET("/health", handler.HealthCheck)
 		svcd.GET("/disk", handler.DiskCheck)

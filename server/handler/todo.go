@@ -2,9 +2,9 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"mini_todo/errno"
-	"mini_todo/model"
 	"strconv"
+	"todos/errno"
+	"todos/model"
 )
 
 type ListTodo struct {

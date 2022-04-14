@@ -9,29 +9,27 @@ type TodoModel struct {
 	Completed int    `json:"completed"`
 }
 
-
-
 // * 设置表名
 func (todo TodoModel) TableName() string {
 	return "todos"
 }
 
-// * 添加todo到数据库
+// * 添加
 func (todo TodoModel) Create() error {
 	return DB.Self.Create(&todo).Error
 }
 
-// * 删除某个todo
+// * 删除
 func (todo TodoModel) Delete() error {
 	return DB.Self.Delete(&todo).Error
 }
 
-// * Update
+// * 更新
 func (todo TodoModel) Update() error {
 	return DB.Self.Save(&todo).Error
 }
 
-// * 获取某一条todo
+// * 获取
 func (todo TodoModel) Get() (TodoModel, error) {
 	return todo, DB.Self.First(&todo, todo.ID).Error
 }
