@@ -15,7 +15,7 @@ axios.post('/api/token', JSON.stringify({
     key: 'matata'
 })).then(res => {
     axios.defaults.headers.common['Authorization'] = "Bearer "+res.data.data.token;
-    console.info("token", res.data.data.token);
+    // console.info("token", res.data.data.token);
 
     new Vue({
         router,

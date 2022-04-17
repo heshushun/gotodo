@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h3>cpu使用量:</h3>
-        <p>status: {{cpu.status}}, info: {{cpu.info}}</p>
+        <h2>cpu 使用量:</h2>
+        <p>status: {{cpu.status}}</p> <p>info: {{cpu.info}}</p>
 
-        <h3>ram 使用量:</h3>
-        <p>status: {{ram.status}}, info: {{ram.info}}</p>
+        <h2>ram 使用量:</h2>
+        <p>status: {{ram.status}}</p> <p>info: {{ram.info}}</p>
 
-        <h3>disk 使用量:</h3>
-        <p>status: {{disk.status}}, info: {{disk.info}}</p>
+        <h2>disk 使用量:</h2>
+        <p>status: {{disk.status}}</p> <p>info: {{disk.info}}</p>
     </div>
 </template>
 
@@ -18,7 +18,6 @@
         name: "Health",
         data() {
             return {
-                sd: "health",
                 cpu: "",
                 ram: "",
                 disk: ""
@@ -40,7 +39,6 @@
                 });
             }
         },
-
 
         mounted() {
             this.getHealth()
